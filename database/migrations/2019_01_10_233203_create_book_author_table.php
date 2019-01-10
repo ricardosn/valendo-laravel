@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAuthorGenderTable extends Migration
+class CreateBookAuthorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateAuthorGenderTable extends Migration
      */
     public function up()
     {
-        Schema::create('author_gender', function (Blueprint $table) {
+        Schema::create('book_author', function (Blueprint $table) {
             $table->unsignedInteger('author_id');
-            $table->unsignedInteger('gender_id');
+            $table->unsignedInteger('book_id');
 
-            $table->unique(['author_id', 'gender_id']);
+            $table->unique(['author_id', 'book_id']);
             $table->foreign('author_id')->references('id')->on('authors')
                 ->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('gender_id')->references('id')->on('genders')
+            $table->foreign('book_id')->references('id')->on('books')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -32,12 +32,12 @@ class CreateAuthorGenderTable extends Migration
      */
     public function down()
     {
-        Schema::table('author_gender', function (Blueprint $table) {
-            $table->dropUnique('author_gender_author_id_gender_id_unique');
-            $table->dropForeign('author_gender_author_id_foreign');
-            $table->dropForeign('author_gender_gender_id_foreign');
+        Schema::table('book_author', function (Blueprint $table) {
+            $table->dropUnique('book_author_author_id_book_id_unique');
+            $table->dropForeign('book_author_author_id_foreign');
+            $table->dropForeign('book_author_book_id_foreign');
         });
 
-        Schema::dropIfExists('author_gender');
+        Schema::dropIfExists('book_author');
     }
 }
