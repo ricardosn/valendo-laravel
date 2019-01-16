@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use Illuminate\Http\Request;
+use App\Services\BookService;
 
 class BookController extends Controller
 {
+    protected $bookService;
+
+    public function __construct(BookService $bookService)
+    {
+        $this->bookService = $bookService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +44,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $this->bookService->store($request);
     }
 
     /**
