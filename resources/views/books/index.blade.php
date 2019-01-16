@@ -6,8 +6,12 @@
             <small>Subtitle</small>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xl-12">
+    <div class="card card-default">
+        <div class="card-header">
+            A row with content
+        </div>
+
+        <div class="card-body">
             <p>A row with content xxx</p>
         </div>
     </div>
