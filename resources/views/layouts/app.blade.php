@@ -23,6 +23,7 @@
    <!-- WHIRL (spinners)-->
    <link rel="stylesheet" href="{{ asset('vendor/whirl/dist/whirl.css') }}">
    <!-- =============== PAGE VENDOR STYLES ===============-->
+   @yield('css')
    <!-- =============== BOOTSTRAP STYLES ===============-->
    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" id="bscss">
    <!-- =============== APP STYLES ===============-->
@@ -609,6 +610,7 @@
    <script src="{{ asset('vendor/popper.js/dist/umd/popper.js') }}"></script>
    <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
    <!-- =============== PAGE VENDOR SCRIPTS ===============-->
+   @yield('js')
    <!-- =============== APP SCRIPTS ===============-->
    <script src="{{ asset('js/app.js') }}"></script>
 </body>
