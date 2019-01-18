@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Book;
 use Illuminate\Http\Request;
 use App\Services\BookService;
+use App\Gender;
+use App\Publisher;
 
 class BookController extends Controller
 {
@@ -33,7 +35,10 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        $genders = Gender::all();
+        $publishers = Publisher::all();
+
+        return view('books.create', compact('genders', 'publishers'));
     }
 
     /**
@@ -66,7 +71,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('books.edit');
     }
 
     /**
@@ -78,7 +83,7 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $this->bookService->update($request);
     }
 
     /**
