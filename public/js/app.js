@@ -3727,6 +3727,9 @@
         if (!$.fn.select2) return;
 
         // Select 2
+        $('.select2').select2({
+            theme: 'bootstrap4'
+        });
 
         $('#select2-1').select2({
             theme: 'bootstrap4'
