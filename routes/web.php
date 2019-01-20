@@ -26,3 +26,5 @@ Route::resource('authors', 'AuthorController');
 Route::resource('publishers', 'PublisherController');
 
 Route::resource('genders', 'GenderController');
+
+Route::resource('tags', 'TagController');
