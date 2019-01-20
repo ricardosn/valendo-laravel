@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Book;
 use Illuminate\Http\Request;
 use App\Publisher;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BookService
 {
@@ -13,13 +14,15 @@ class BookService
         $publisher = Publisher::find($request->publisher_id);
 
         if (!$publisher) {
-            // TODO throw exception
+            throw new ModelNotFoundException("Publisher not found by id " . $request->publisher_id);
         }
 
         $book = $publisher->books()->create($request->all());
         // TODO save author
         $book->genders()->attach($request->genders);
         $book->tags()->attach($request->tags);
+
+        return $book;
 
     }
 }
