@@ -201,34 +201,7 @@
                   </li>
                   <!-- END user info-->
                   <!-- Iterates over all sidebar items-->
-                  <li class="nav-heading ">
-                     <span data-localize="sidebar.heading.HEADER">Main Navigation</span>
-                  </li>
-                  <li class=" ">
-                     <a href="#dashboard" title="Dashboard" data-toggle="collapse">
-                        <div class="float-right badge badge-success">3</div>
-                        <em class="icon-speedometer"></em>
-                        <span data-localize="sidebar.nav.DASHBOARD">Dashboard</span>
-                     </a>
-                     <ul class="sidebar-nav sidebar-subnav collapse" id="dashboard">
-                        <li class="sidebar-subnav-header">Dashboard</li>
-                        <li class=" ">
-                           <a href="dashboard.html" title="Dashboard v1">
-                              <span>Dashboard v1</span>
-                           </a>
-                        </li>
-                        <li class=" ">
-                           <a href="dashboard_v2.html" title="Dashboard v2">
-                              <span>Dashboard v2</span>
-                           </a>
-                        </li>
-                        <li class=" ">
-                           <a href="dashboard_v3.html" title="Dashboard v3">
-                              <span>Dashboard v3</span>
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
+                  @include('layouts.menu')
                </ul>
                <!-- END sidebar nav-->
             </nav>
