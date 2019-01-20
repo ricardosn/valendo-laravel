@@ -24,3 +24,5 @@ Route::resource('books', 'BookController');
 Route::resource('authors', 'AuthorController');
 
 Route::resource('publishers', 'PublisherController');
+
+Route::resource('genders', 'GenderController');
