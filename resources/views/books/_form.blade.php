@@ -9,7 +9,7 @@
         <div class="form-group row">
             <label class="col-md-2" for="title">Título</label>
             <div class="col-md-10">
-                <input class="form-control" id="title" type="text" name="title" />
+                <input class="form-control" id="title" type="text" name="title" value="{{ old('title') }}" />
             </div>
         </div>
     </fieldset>
@@ -18,7 +18,7 @@
         <div class="form-group row">
             <label class="col-md-2" for="subtitle">Subtitulo</label>
             <div class="col-md-10">
-                <input class="form-control" id="subtitle" type="text" name="subtitle" />
+                <input class="form-control" id="subtitle" type="text" name="subtitle" value="{{ old('subtitle') }}" />
             </div>
         </div>
     </fieldset>
@@ -27,7 +27,7 @@
         <div class="form-group row">
             <label class="col-md-2" for="isbn_13">ISBN 13</label>
             <div class="col-md-10">
-                <input class="form-control" id="isbn_13" type="text" name="isbn_13" />
+                <input class="form-control" id="isbn_13" type="text" name="isbn_13" value="{{ old('isbn_13') }}" />
             </div>
         </div>
     </fieldset>
@@ -36,7 +36,7 @@
         <div class="form-group row">
             <label class="col-md-2" for="isbn_10">ISBN 10</label>
             <div class="col-md-10">
-                <input class="form-control" id="isbn_10" type="text" name="isbn_10" />
+                <input class="form-control" id="isbn_10" type="text" name="isbn_10" value="{{ old('isbn_10') }}" />
             </div>
         </div>
     </fieldset>
@@ -45,7 +45,7 @@
         <div class="form-group row">
             <label class="col-md-2" for="series">Coleção</label>
             <div class="col-md-10">
-                <input class="form-control" id="series" type="number" name="series" />
+                <input class="form-control" id="series" type="number" name="series" value="{{ old('series') }}" />
             </div>
         </div>
     </fieldset>
@@ -54,7 +54,7 @@
         <div class="form-group row">
             <label class="col-md-2" for="edition">Edição</label>
             <div class="col-md-10">
-                <input class="form-control" id="edition" type="number" name="edition" />
+                <input class="form-control" id="edition" type="number" name="edition" value="{{ old('edition') }}" />
             </div>
         </div>
     </fieldset>
@@ -63,7 +63,7 @@
         <div class="form-group row">
             <label class="col-md-2" for="year">Ano</label>
             <div class="col-md-10">
-                <input class="form-control" id="year" type="number" name="year" />
+                <input class="form-control" id="year" type="number" name="year" value="{{ old('year') }}" />
             </div>
         </div>
     </fieldset>
@@ -72,7 +72,7 @@
         <div class="form-group row">
             <label class="col-md-2" for="page_number">Número de Páginas</label>
             <div class="col-md-10">
-                <input class="form-control" id="page_number" type="number" name="page_number" />
+                <input class="form-control" id="page_number" type="number" name="page_number" value="{{ old('page_number') }}" />
             </div>
         </div>
     </fieldset>
@@ -81,7 +81,7 @@
         <div class="form-group row">
             <label class="col-md-2" for="synopsis">Sinopse</label>
             <div class="col-md-10">
-                <textarea class="form-control note-editor" rows="10" id="synopsis" name="synopsis"></textarea>
+                <textarea class="form-control note-editor" rows="10" id="synopsis" name="synopsis" value="{{ old('synopsis') }}"></textarea>
             </div>
         </div>
     </fieldset>

@@ -8,6 +8,7 @@ use App\Services\BookService;
 use App\Gender;
 use App\Publisher;
 use App\Tag;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BookController extends Controller
 {
@@ -51,7 +52,25 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $this->bookService->store($request);
+        // TODO validate the rest of the fields
+        $request->validate([
+            'title' => 'required',
+            'subtitle' => 'required',
+            'isbn_13' => 'required',
+            'isbn_10' => 'required',
+        ]);
+
+        try {
+            $this->bookService->store($request);
+        } catch (ModelNotFoundException $e) {
+            flash('Erro! Livro não inserido.')->error();
+
+            return back()->withError($e->getMessage())->withInput();
+        }
+
+        flash('Livro inserido com sucesso.')->success();
+
+        return redirect('books');
     }
 
     /**
