@@ -138,7 +138,7 @@
 </div>
 
 <div class="card-footer text-muted">
-    <a href="{{ url('/books') }}" class="btn btn-lg">Voltar</a>
+    <a href="{{ url('/authors') }}" class="btn btn-lg">Voltar</a>
 
     <input class="btn btn-lg btn-green float-right" type="submit" value="{{ $action }}">
 </div>
