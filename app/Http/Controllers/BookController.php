@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\BookService;
 use App\Gender;
 use App\Publisher;
+use App\Tag;
 
 class BookController extends Controller
 {
@@ -37,8 +38,9 @@ class BookController extends Controller
     {
         $genders = Gender::all();
         $publishers = Publisher::all();
+        $tags = Tag::all();
 
-        return view('books.create', compact('genders', 'publishers'));
+        return view('books.create', compact('genders', 'publishers', 'tags'));
     }
 
     /**

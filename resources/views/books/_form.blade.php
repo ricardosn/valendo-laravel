@@ -112,6 +112,19 @@
             </div>
         </div>
     </fieldset>
+
+    <fieldset>
+        <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label mb-2">Tags</label>
+            <div class="col-md-10">
+                <select class="form-control select2" id="tags" name="tags[]" multiple="multiple">
+                    @foreach ($tags as $tag)
+                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+    </fieldset>
 </div>
 
 <div class="card-footer text-muted">

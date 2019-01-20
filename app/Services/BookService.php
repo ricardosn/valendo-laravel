@@ -11,9 +11,15 @@ class BookService
     public function store(Request $request)
     {
         $publisher = Publisher::find($request->publisher_id);
-        $book = $publisher->books()->create($request->all());
-        $book->genders()->attach($request->genders);
 
-        // TODO save tags and author
+        if (!$publisher) {
+            // TODO throw exception
+        }
+
+        $book = $publisher->books()->create($request->all());
+        // TODO save author
+        $book->genders()->attach($request->genders);
+        $book->tags()->attach($request->tags);
+
     }
 }
