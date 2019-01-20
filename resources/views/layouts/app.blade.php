@@ -630,7 +630,9 @@
       $('#flash-overlay-modal').modal();
       $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
       // Input Mask
-      $('[data-masked]').inputmask();
+      if ($('[data-masked]').length) {
+         $('[data-masked]').inputmask();
+      }
    </script>
 </body>
 
