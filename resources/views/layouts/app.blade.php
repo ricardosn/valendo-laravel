@@ -629,6 +629,8 @@
       // Laracast Flash Message scripts
       $('#flash-overlay-modal').modal();
       $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+      // Input Mask
+      $('[data-masked]').inputmask();
    </script>
 </body>
 

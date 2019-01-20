@@ -26,7 +26,7 @@ class BookService
 
     }
 
-    public function update(Request $request, $book)
+    public function update(Request $request, Book $book)
     {
         $publisher = Publisher::find($request->publisher_id);
 
