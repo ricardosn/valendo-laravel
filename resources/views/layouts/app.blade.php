@@ -588,7 +588,19 @@
       <section class="section-container">
          <!-- Page content-->
          <div class="content-wrapper">
+            @include('flash::message')
+
             @yield('content')
+
+            @if ($errors->any())
+               <div class="alert alert-danger">
+                  <ul>
+                        @foreach ($errors->all() as $error)
+                           <li>{{ $error }}</li>
+                        @endforeach
+                  </ul>
+               </div>
+            @endif
          </div>
       </section>
       <!-- Page footer-->
@@ -613,6 +625,11 @@
    @yield('js')
    <!-- =============== APP SCRIPTS ===============-->
    <script src="{{ asset('js/app.js') }}"></script>
+   <script>
+      // Laracast Flash Message scripts
+      $('#flash-overlay-modal').modal();
+      $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+   </script>
 </body>
 
 </html>
