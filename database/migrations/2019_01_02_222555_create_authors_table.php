@@ -18,7 +18,7 @@ class CreateAuthorsTable extends Migration
             $table->text('name');
             $table->text('known_as');
             $table->enum('gender', ['masculino', 'feminino', 'não binário', 'queer']);
-            $table->text('bithday');
+            $table->text('birthday');
             $table->text('death');
             $table->text('country');
             $table->text('state');
