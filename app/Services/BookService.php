@@ -25,4 +25,22 @@ class BookService
         return $book;
 
     }
+
+    public function update(Request $request, $book)
+    {
+        $publisher = Publisher::find($request->publisher_id);
+
+        if (!$publisher) {
+            throw new ModelNotFoundException("Publisher not found by id " . $request->publisher_id);
+        }
+
+        $book->fill($request->all());
+        $publisher->books()->save($book);
+        // TODO save author
+        $book->genders()->sync($request->genders);
+        $book->tags()->sync($request->tags);
+
+        return $book;
+
+    }
 }

@@ -92,7 +92,11 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view('books.edit');
+        $genders = Gender::all();
+        $publishers = Publisher::all();
+        $tags = Tag::all();
+
+        return view('books.edit', compact('book', 'publishers', 'genders', 'tags'));
     }
 
     /**
@@ -104,7 +108,25 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        $this->bookService->update($request);
+        // TODO validate the rest of the fields
+        $request->validate([
+            'title' => 'required',
+            'subtitle' => 'required',
+            'isbn_13' => 'required',
+            'isbn_10' => 'required',
+        ]);
+
+        try {
+            $this->bookService->update($request, $book);
+        } catch (ModelNotFoundException $e) {
+            flash('Erro! Livro não alterado.')->error();
+
+            return back()->withError($e->getMessage())->withInput();
+        }
+
+        flash('Livro alterado com sucesso.')->success();
+
+        return redirect('books');
     }
 
     /**
