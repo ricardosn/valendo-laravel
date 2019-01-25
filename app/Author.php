@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Author extends Model
 {
@@ -10,7 +11,7 @@ class Author extends Model
         'name',
         'known_as',
         'gender',
-        'bithday',
+        'birthday',
         'death',
         'country',
         'state',
@@ -21,6 +22,21 @@ class Author extends Model
         'twitter',
         'wikipedia',
     ];
+
+    protected $dates = [
+        'birthday',
+        'death'
+    ];
+
+    public function setBirthdayAttribute($value)
+    {
+        $this->attributes['birthday'] = Carbon::createFromFormat('d/m/Y', $value);;
+    }
+
+    public function setDeathAttribute($value)
+    {
+        $this->attributes['death'] = Carbon::createFromFormat('d/m/Y', $value);;
+    }
 
     public function books() {
         return $this->belongsToMany('App\Book');

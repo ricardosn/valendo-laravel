@@ -57,9 +57,36 @@
 
     <fieldset>
         <div class="form-group row">
+            <label class="col-md-2" for="city">Cidade</label>
+            <div class="col-md-10">
+                <input class="form-control" id="city" type="text" name="city" value="{{ old('city', $author->city ?? '') }}" />
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <div class="form-group row">
+            <label class="col-md-2" for="state">Estado</label>
+            <div class="col-md-10">
+                <input class="form-control" id="state" type="text" name="state" value="{{ old('state', $author->state ?? '') }}" />
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <div class="form-group row">
+            <label class="col-md-2" for="country">País</label>
+            <div class="col-md-10">
+                <input class="form-control" id="country" type="text" name="country" value="{{ old('country', $author->country ?? '') }}" />
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <div class="form-group row">
             <label class="col-md-2" for="birthday">Nascimento</label>
             <div class="col-md-10">
-                <input class="form-control" id="birthday" type="text" name="birthday" value="{{ old('birthday', $author->birthday ?? '') }}" data-masked="" data-inputmask="'mask': '99/99/9999'" placeholder="Date" im-insert="true" />
+                <input class="form-control" id="birthday" type="text" name="birthday" value="{{ old('birthday', $author->birthday->format('d/m/Y') ?? '') }}" data-masked="" data-inputmask="'mask': '99/99/9999'" placeholder="Date" im-insert="true" />
             </div>
         </div>
     </fieldset>
@@ -68,7 +95,7 @@
         <div class="form-group row">
             <label class="col-md-2" for="death">Falecimento</label>
             <div class="col-md-10">
-                <input class="form-control" id="death" type="text" name="death" value="{{ old('death', $author->death ?? '') }}" data-masked="" data-inputmask="'mask': '99/99/9999'" placeholder="Date" im-insert="true" />
+                <input class="form-control" id="death" type="text" name="death" value="{{ old('death', $author->death->format('d/m/Y') ?? '') }}" data-masked="" data-inputmask="'mask': '99/99/9999'" placeholder="Date" im-insert="true" />
             </div>
         </div>
     </fieldset>
