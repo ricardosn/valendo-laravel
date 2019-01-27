@@ -9,7 +9,6 @@ class Book extends Model
     protected $fillable = [
         'title',
         'subtitle',
-        'series',
         'isbn_10',
         'isbn_13',
         'edition',
@@ -18,19 +17,28 @@ class Book extends Model
         'synopsis',
     ];
 
-    public function publisher() {
+    public function publisher()
+    {
         return $this->belongsTo('App\Publisher');
     }
 
-    public function authors() {
+    public function collection()
+    {
+        return $this->belongsTo('App\Collection');
+    }
+
+    public function authors()
+    {
         return $this->belongsToMany('App\Author');
     }
 
-    public function genders() {
+    public function genders()
+    {
         return $this->belongsToMany('App\Gender');
     }
 
-    public function tags() {
+    public function tags()
+    {
         return $this->belongsToMany('App\Tag');
     }
 }

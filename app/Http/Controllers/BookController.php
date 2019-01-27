@@ -9,6 +9,7 @@ use App\Gender;
 use App\Publisher;
 use App\Tag;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Collection;
 
 class BookController extends Controller
 {
@@ -40,8 +41,9 @@ class BookController extends Controller
         $genders = Gender::all();
         $publishers = Publisher::all();
         $tags = Tag::all();
+        $collections = Collection::all();
 
-        return view('books.create', compact('genders', 'publishers', 'tags'));
+        return view('books.create', compact('genders', 'publishers', 'tags', 'collections'));
     }
 
     /**
@@ -95,8 +97,9 @@ class BookController extends Controller
         $genders = Gender::all();
         $publishers = Publisher::all();
         $tags = Tag::all();
+        $collections = Collection::all();
 
-        return view('books.edit', compact('book', 'publishers', 'genders', 'tags'));
+        return view('books.edit', compact('book', 'publishers', 'genders', 'tags', 'collections'));
     }
 
     /**

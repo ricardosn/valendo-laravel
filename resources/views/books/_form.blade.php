@@ -42,10 +42,19 @@
     </fieldset>
 
     <fieldset>
-        <div class="form-group row">
-            <label class="col-md-2" for="series">Coleção</label>
+        <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label mb-2">Coleção</label>
             <div class="col-md-10">
-                <input class="form-control" id="series" type="number" name="series" value="{{ old('series', $book->series ?? '') }}" />
+                <select class="form-control select2-tag" id="collection" name="collection">
+                    <option>Digite ou selecione uma coleção</option>
+                    @foreach ($collections as $collection)
+                        <option
+                            @if ($collection->id == old('collection', isset($book) && $book->collection ? $book->collection->name : ''))
+                                selected="selected"
+                            @endif
+                            value="{{ $collection->name }}">{{ $collection->name }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
     </fieldset>

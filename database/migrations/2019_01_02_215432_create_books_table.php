@@ -16,10 +16,9 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->text('title');
-            $table->text('subtitle');
-            $table->text('series');
-            $table->text('isbn_10');
-            $table->text('isbn_13');
+            $table->mediumText('subtitle');
+            $table->char('isbn_10', 10);
+            $table->char('isbn_13', 13);
             $table->tinyInteger('edition');
             $table->year('year');
             $table->integer('page_number');

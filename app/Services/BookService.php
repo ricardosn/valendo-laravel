@@ -6,6 +6,7 @@ use App\Book;
 use Illuminate\Http\Request;
 use App\Publisher;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Collection;
 
 class BookService
 {
@@ -21,6 +22,11 @@ class BookService
         // TODO save author
         $book->genders()->attach($request->genders);
         $book->tags()->attach($request->tags);
+
+        if ($request->collection) {
+            $collection = Collection::firstOrCreate(['name' => $request->collection]);
+            $collection->books()->save($book);
+        }
 
         return $book;
 
