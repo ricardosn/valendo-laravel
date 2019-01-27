@@ -16,18 +16,18 @@ class CreateAuthorsTable extends Migration
         Schema::create('authors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('known_as');
+            $table->string('known_as')->nullable()->default(null);
             $table->enum('gender', ['masculino', 'feminino', 'não binário', 'queer']);
-            $table->date('birthday');
-            $table->date('death');
-            $table->string('country');
-            $table->char('state', 2);
-            $table->string('city');
-            $table->longText('biography');
-            $table->string('site');
-            $table->string('facebook');
-            $table->string('twitter');
-            $table->string('wikipedia');
+            $table->date('birthday')->nullable()->default(null);
+            $table->date('death')->nullable()->default(null);
+            $table->string('country')->nullable()->default(null);
+            $table->char('state', 2)->nullable()->default(null);
+            $table->string('city')->nullable()->default(null);
+            $table->longText('biography')->nullable()->default(null);
+            $table->string('site')->nullable()->default(null);
+            $table->string('facebook')->nullable()->default(null);
+            $table->string('twitter')->nullable()->default(null);
+            $table->string('wikipedia')->nullable()->default(null);
             $table->timestamps();
         });
     }

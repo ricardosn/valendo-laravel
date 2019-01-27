@@ -17,7 +17,7 @@ class CreateBooksTable extends Migration
             $table->increments('id');
             $table->text('title');
             $table->mediumText('subtitle');
-            $table->char('isbn_10', 10);
+            $table->char('isbn_10', 10)->nullable()->default(null);
             $table->char('isbn_13', 13);
             $table->tinyInteger('edition');
             $table->year('year');
