@@ -8,7 +8,7 @@
    <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
    <!-- CSRF Token -->
    <meta name="csrf-token" content="{{ csrf_token() }}">
-   <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
    <title>{{ config('app.name', 'Laravel') }}</title>
    <!-- =============== VENDOR STYLES ===============-->
    <!-- FONT AWESOME-->
@@ -596,6 +596,7 @@
    <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
    <!-- =============== PAGE VENDOR SCRIPTS ===============-->
    @yield('js')
+   @yield('modals')
    <!-- =============== APP SCRIPTS ===============-->
    <script src="{{ asset('js/app.js') }}"></script>
    <script>

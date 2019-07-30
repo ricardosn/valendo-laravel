@@ -43,18 +43,19 @@
 
     <fieldset>
         <div class="form-group row mb-2">
-        <label class="col-md-2 col-form-label mb-2">Coleção</label>
+            <label class="col-md-2 col-form-label mb-2">Coleção</label>
             <div class="col-md-10">
                 <select class="form-control select2-tag" id="collection" name="collection">
                     <option>Digite ou selecione uma coleção</option>
                     @foreach ($collections as $collection)
-                        <option
-                            @if ($collection->id == old('collection', isset($book) && $book->collection ? $book->collection->name : ''))
-                                selected="selected"
-                            @endif
-                            value="{{ $collection->name }}">{{ $collection->name }}</option>
+                    <option @if ($collection->name == old('collection', $book->collection->name ?? ''))
+                        selected="selected"
+                        @endif
+                        value="{{ $collection->name }}">{{ $collection->name }}</option>
                     @endforeach
                 </select>
+
+                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addCollectionModal">Adicionar Nova</button>
             </div>
         </div>
     </fieldset>
@@ -97,16 +98,15 @@
 
     <fieldset>
         <div class="form-group row mb-2">
-        <label class="col-md-2 col-form-label mb-2">Editora</label>
+            <label class="col-md-2 col-form-label mb-2">Editora</label>
             <div class="col-md-10">
                 <select class="form-control select2" id="publisher_id" name="publisher_id">
                     <option>Selecione uma editora</option>
                     @foreach ($publishers as $publisher)
-                        <option
-                            @if ($publisher->id == old('publisher_id', isset($book) ? $book->publisher->id : ''))
-                                selected="selected"
-                            @endif
-                            value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                    <option @if ($publisher->id == old('publisher_id', $book->publisher->id ?? ''))
+                        selected="selected"
+                        @endif
+                        value="{{ $publisher->id }}">{{ $publisher->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -119,12 +119,11 @@
             <div class="col-md-10">
                 <select class="form-control select2" id="genders" name="genders[]" multiple="multiple">
                     @foreach ($genders as $gender)
-                        <option
-                            @if (isset($book) && $book->genders->contains($gender) ||
-                                (old('genders') && in_array($gender->id, old('genders'))))
-                                selected="selected"
-                            @endif
-                            value="{{ $gender->id }}">{{ $gender->name }}</option>
+                    <option @if (isset($book) && $book->genders->contains($gender) ||
+                        (old('genders') && in_array($gender->id, old('genders'))))
+                        selected="selected"
+                        @endif
+                        value="{{ $gender->id }}">{{ $gender->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -135,14 +134,13 @@
         <div class="form-group row mb-2">
             <label class="col-md-2 col-form-label mb-2">Tags</label>
             <div class="col-md-10">
-                <select class="form-control select2" id="tags" name="tags[]" multiple="multiple">
+                <select class="form-control select2-tag" id="tags" name="tags[]" multiple="multiple">
                     @foreach ($tags as $tag)
-                        <option
-                            @if (isset($book) && $book->tags->contains($tag) ||
-                                (old('tags') && in_array($tag->id, old('tags'))))
-                                selected="selected"
-                            @endif
-                            value="{{ $tag->id }}">{{ $tag->name }}</option>
+                    <option @if (isset($book) && $book->tags->contains($tag) ||
+                        (old('tags') && in_array($tag->id, old('tags'))))
+                        selected="selected"
+                        @endif
+                        value="{{ $tag->id }}">{{ $tag->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -155,3 +153,30 @@
 
     <input class="btn btn-lg btn-green float-right" type="submit" value="{{ $action }}">
 </div>
+
+@section('js')
+<!-- SELECT2-->
+<script src="{{ asset('vendor/select2/dist/js/select2.full.js') }}"></script>
+@endsection
+
+@section('modals')
+    <div class="modal fade" id="addCollectionModal" tabindex="-1" role="dialog" aria-labelledby="addCollectionModalLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="addCollectionModalLabel">Adicionar Coleção</h4>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    //
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
+                    <button class="btn btn-primary" type="button">Adicionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

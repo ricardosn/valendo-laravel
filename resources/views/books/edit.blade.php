@@ -20,8 +20,3 @@
         </form>
     </div>
 @endsection
-
-@section('js')
-    <!-- SELECT2-->
-    <script src="{{ asset('vendor/select2/dist/js/select2.full.js') }}"></script>
-@endsection

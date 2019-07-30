@@ -41,4 +41,9 @@ class Book extends Model
     {
         return $this->belongsToMany('App\Tag');
     }
+
+    public function bookShelves()
+    {
+        return $this->hasMany('App\BookShelf');
+    }
 }

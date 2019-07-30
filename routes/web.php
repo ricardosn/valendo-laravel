@@ -28,3 +28,5 @@ Route::resource('publishers', 'PublisherController');
 Route::resource('genders', 'GenderController');
 
 Route::resource('tags', 'TagController');
+
+Route::resource('book_shelves', 'BookShelfController');
